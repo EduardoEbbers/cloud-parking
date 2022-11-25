@@ -44,8 +44,41 @@ public class ParkingControllerIT /*extends AbstractContainerBase*/ {
                 .body("license[0]", Matchers.equalTo("DMS-1111"));
 
          */
+        /*
         RestAssured
                 .given()
+                .when()
+                .get("/parking")
+                .then()
+                .statusCode(HttpStatus.OK.value());
+
+         */
+        /*
+        RestAssured
+                .given()
+                .auth()
+                .basic("user", "dio")
+                .when()
+                .get("/parking")
+                .then()
+                .statusCode(HttpStatus.OK.value());
+
+         */
+        /*
+        RestAssured
+                .given()
+                .auth()
+                .basic("user", "12345")
+                .when()
+                .get("/parking")
+                .then()
+                .statusCode(HttpStatus.OK.value());
+
+         */
+
+        RestAssured
+                .given()
+                .header("Authorization", "Basic mfawiq4wlnasdkjar")
                 .when()
                 .get("/parking")
                 .then()
@@ -62,6 +95,8 @@ public class ParkingControllerIT /*extends AbstractContainerBase*/ {
 
         RestAssured
                 .given()
+                .auth()
+                .basic("user", "dio")
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)
